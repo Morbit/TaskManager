@@ -4,7 +4,23 @@ FactoryBot.define do
     last_name
     password
     email
-    avatar { "MyString" }
-    type { "" }
+    avatar
+    type { "User" }
   end
+
+  factory :developer do
+    type { "Developer" }
+    password
+  end
+
+  factory :admin do
+    type { "Admin" }
+    password
+  end
+
+  factory :manager do
+    type { "Manager" }
+    password
+  end
+  
 end
