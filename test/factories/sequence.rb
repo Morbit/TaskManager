@@ -5,7 +5,7 @@ FactoryBot.define do
   sequence :email do |n|
     "person#{n}@example.com"
   end
-  sequence :type do |n|
-    ""
+  sequence :type do |_n|
+    ''
   end
 end
