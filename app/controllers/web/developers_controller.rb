@@ -8,7 +8,7 @@ class Web::DevelopersController < Web::ApplicationController
 
     if @developer.save
       sign_in(@developer)
-      redirect_to(:board)
+      redirect_to(:boards)
     else
       render(:new)
     end
