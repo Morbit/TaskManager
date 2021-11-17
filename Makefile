@@ -5,4 +5,4 @@ lint_frontend:
 test_backend:
 	docker-compose run web rails test
 check_code:
-	make lint_backend && make test_backend
+	make lint_backend && make test_backend && make lint_frontend
