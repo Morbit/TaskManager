@@ -8,7 +8,7 @@ class Web::SessionsController < Web::ApplicationController
 
     if @session.valid?
       sign_in(@session.user)
-      redirect_to(:boards)
+      redirect_to(:board)
     else
       render(:new)
     end
