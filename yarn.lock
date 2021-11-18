@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@asseinfo/react-kanban@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@asseinfo/react-kanban/-/react-kanban-2.2.0.tgz#56b703e9e6d1722a4b2edee321c928fd23749a4d"
-  integrity sha512-/gCigrNXRHeP9VCo8RipTOrA0vAPRIOThJhR4ibVxe6BLkaWFUEuJ1RMT4fODpRRsE3XsdrfVGKkfpRBKgvxXg==
-  dependencies:
-    react-beautiful-dnd "^13.0.0"
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.0":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.0.tgz#0dfc80309beec8411e65e706461c408b0bb9b431"
@@ -1029,6 +1022,13 @@
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
+
+"@lourenci/react-kanban@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@lourenci/react-kanban/-/react-kanban-2.1.0.tgz#1e9ffab30d37a19815adcb1a94cb35817ebee8a9"
+  integrity sha512-VZK+HbH2DtfQA7RhMWIZAtieN78n6XzJ8EDkKdaOxbefg1FYEJeyQ/GCav6CW7UvWEIAJxBjaYwF+csadIMYFA==
+  dependencies:
+    react-beautiful-dnd "^13.0.0"
 
 "@material-ui/core@^4.12.3":
   version "4.12.3"
