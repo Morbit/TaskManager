@@ -31,6 +31,11 @@ gem 'simple_form'
 gem 'state_machines'
 gem 'state_machines-activerecord'
 gem 'slim-rails'
+gem 'kaminari'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'responders'
+gem 'active_model_serializers'
+gem 'webpacker-react'
 
 group :development, :test do
   gem 'factory_bot_rails'
