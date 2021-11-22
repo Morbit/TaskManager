@@ -4,6 +4,7 @@ FactoryBot.define do
     last_name
     password
     email
+    avatar
 
     factory :admin do
       type { 'Admin' }
