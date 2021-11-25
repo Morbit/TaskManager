@@ -49,11 +49,6 @@ const TaskBoard = () => {
   const [mode, setMode] = useState(MODES.NONE);
   const [openedTaskId, setOpenedTaskId] = useState(null);
 
-  useEffect(() => loadBoard(), []);
-  useEffect(() => generateBoard(), [boardCards]);
-
-  const styles = useStyles();
-
   const loadColumn = (state, page, perPage) =>
     TasksRepository.index({
       q: { stateEq: state },
@@ -70,22 +65,25 @@ const TaskBoard = () => {
     });
   };
 
+  const loadBoard = () => {
+    STATES.map(({ key }) => loadColumnInitial(key));
+  };
+
   const generateBoard = () => {
-    const board = {
+    setBoard({
       columns: STATES.map(({ key, value }) => ({
         id: key,
         title: value,
         cards: propOr({}, 'cards', boardCards[key]),
         meta: propOr({}, 'meta', boardCards[key]),
       })),
-    };
-
-    setBoard(board);
+    });
   };
 
-  const loadBoard = () => {
-    STATES.map(({ key }) => loadColumnInitial(key));
-  };
+  useEffect(() => loadBoard(), []);
+  useEffect(() => generateBoard(), [boardCards]);
+
+  const styles = useStyles();
 
   const loadColumnMore = (state, page = 1, perPage = 10) => {
     loadColumn(state, page, perPage).then(({ data: { items, meta } }) => {
@@ -126,7 +124,7 @@ const TaskBoard = () => {
 
   const handleTaskCreate = (params) => {
     const attributes = TaskForm.attributesToSubmit(params);
-    return TasksRepository.create(attributes).then(({ data: { task } }) => {
+    return TasksRepository.create(attributes).then(() => {
       loadColumnInitial('new_task');
       setMode(MODES.NONE);
     });

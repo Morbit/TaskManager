@@ -37,8 +37,6 @@ gem 'responders'
 gem 'active_model_serializers'
 gem 'webpacker-react'
 gem 'js-routes'
-gem 'byebug'
-
 
 group :development, :test do
   gem 'factory_bot_rails'
