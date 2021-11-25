@@ -52,6 +52,8 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
   };
   const isLoading = isNil(task);
 
+  const handleChangeSelect = (fieldName) => (user) => onChange({ ...task, [fieldName]: user });
+
   return (
     <Modal className={styles.modal} open onClose={onClose}>
       <Card className={styles.root}>
