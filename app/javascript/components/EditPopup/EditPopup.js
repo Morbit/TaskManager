@@ -97,6 +97,12 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
   );
 };
 
-EditPopup.propTypes = {};
+EditPopup.propTypes = {
+  cardId: PropTypes.number.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onCardDestroy: PropTypes.func.isRequired,
+  onLoadCard: PropTypes.func.isRequired,
+  onCardUpdate: PropTypes.func.isRequired,
+};
 
 export default EditPopup;
