@@ -17,7 +17,13 @@ export default {
     return FetchHelper.put(path, { task: data });
   },
 
-  create() {},
+  create(data) {
+    const path = routes.apiV1TasksPath();
+    return FetchHelper.post(path, { task: data });
+  },
 
-  destroy() {},
+  destroy(id) {
+    const path = routes.apiV1TaskPath(id);
+    return FetchHelper.delete(path);
+  },
 };
