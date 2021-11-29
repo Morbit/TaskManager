@@ -68,11 +68,10 @@ export const useTasksActions = () => {
     });
   };
 
-  const taskDestroy = (id) => {
+  const taskDestroy = (id) =>
     TasksRepository.destroy(id).then(() => {
       dispatch(taskDestroySuccess());
     });
-  };
 
   const loadTask = (id) =>
     TasksRepository.show(id).then(({ data: { task } }) => {
