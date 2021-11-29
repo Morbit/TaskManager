@@ -40,10 +40,12 @@ const tasksSlice = createSlice({
 
       return state;
     },
+    updateTaskSuccess() {},
   },
 });
 
-const { loadColumnSuccess, loadColumnMoreSuccess, taskDestroySuccess, loadTaskSuccess } = tasksSlice.actions;
+const { loadColumnSuccess, loadColumnMoreSuccess, taskDestroySuccess, loadTaskSuccess, updateTaskSuccess } =
+  tasksSlice.actions;
 
 export default tasksSlice.reducer;
 
@@ -79,11 +81,17 @@ export const useTasksActions = () => {
       return task;
     });
 
+  const updateTask = (id, data) =>
+    TasksRepository.update(id, data).then(() => {
+      dispatch(updateTaskSuccess());
+    });
+
   return {
     loadBoard,
     loadColumn,
     loadColumnMore,
     taskDestroy,
     loadTask,
+    updateTask,
   };
 };

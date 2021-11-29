@@ -20,7 +20,7 @@ const MODES = {
 };
 
 const TaskBoard = () => {
-  const { board, loadBoard, loadColumnMore, loadTask, taskDestroy } = useTasks();
+  const { board, loadBoard, loadColumnMore, loadTask, taskDestroy, updateTask } = useTasks();
   const [mode, setMode] = useState(MODES.NONE);
   const [openedTaskId, setOpenedTaskId] = useState(null);
   const styles = useStyles();
@@ -46,7 +46,13 @@ const TaskBoard = () => {
   const handleCardDragEnd = () => {};
   const handleTaskCreate = () => {};
   const handleTaskLoad = (id) => loadTask(id);
-  const handleTaskUpdate = () => {};
+  const handleTaskUpdate = (task) => {
+    updateTask(task.id, task).then(() => {
+      handleClose();
+      loadBoard();
+    });
+  };
+
   const handleTaskDestroy = (id) => {
     taskDestroy(id).then(() => {
       handleClose();
