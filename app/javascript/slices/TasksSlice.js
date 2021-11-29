@@ -86,6 +86,8 @@ export const useTasksActions = () => {
       dispatch(updateTaskSuccess());
     });
 
+  const createTask = (attributes) => TasksRepository.create(attributes);
+
   return {
     loadBoard,
     loadColumn,
@@ -93,5 +95,6 @@ export const useTasksActions = () => {
     taskDestroy,
     loadTask,
     updateTask,
+    createTask,
   };
 };
