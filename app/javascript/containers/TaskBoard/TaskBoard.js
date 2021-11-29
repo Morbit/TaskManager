@@ -3,6 +3,8 @@ import KanbanBoard from '@lourenci/react-kanban';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
+import '@asseinfo/react-kanban/dist/styles.css';
+
 import Task from 'components/Task';
 import AddPopup from 'components/AddPopup';
 import EditPopup from 'components/EditPopup';
