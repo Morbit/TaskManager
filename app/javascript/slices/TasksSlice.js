@@ -34,10 +34,16 @@ const tasksSlice = createSlice({
     loadColumnMoreSuccess(state, { payload }) {
       console.log(999, state, payload);
     },
+    taskDestroySuccess(state, { payload }) {},
+    loadTaskSuccess(state, { payload }) {
+      state.task = payload;
+
+      return state;
+    },
   },
 });
 
-const { loadColumnSuccess, loadColumnMoreSuccess } = tasksSlice.actions;
+const { loadColumnSuccess, loadColumnMoreSuccess, taskDestroySuccess, loadTaskSuccess } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
 
@@ -62,9 +68,23 @@ export const useTasksActions = () => {
     });
   };
 
+  const taskDestroy = (id) => {
+    TasksRepository.destroy(id).then(() => {
+      dispatch(taskDestroySuccess());
+    });
+  };
+
+  const loadTask = (id) =>
+    TasksRepository.show(id).then(({ data: { task } }) => {
+      dispatch(loadTaskSuccess(task));
+      return task;
+    });
+
   return {
     loadBoard,
     loadColumn,
     loadColumnMore,
+    taskDestroy,
+    loadTask,
   };
 };
