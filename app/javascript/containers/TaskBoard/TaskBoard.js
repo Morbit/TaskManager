@@ -5,6 +5,8 @@ import AddIcon from '@material-ui/icons/Add';
 
 import '@asseinfo/react-kanban/dist/styles.css';
 
+import TaskPresenter from 'presenters/TaskPresenter';
+
 import Task from 'components/Task';
 import AddPopup from 'components/AddPopup';
 import EditPopup from 'components/EditPopup';
@@ -20,7 +22,7 @@ const MODES = {
 };
 
 const TaskBoard = () => {
-  const { board, loadBoard, loadColumnMore, loadTask, taskDestroy, updateTask } = useTasks();
+  const { board, loadBoard, loadColumnMore, loadTask, taskDestroy, updateTask, loadColumn } = useTasks();
   const [mode, setMode] = useState(MODES.NONE);
   const [openedTaskId, setOpenedTaskId] = useState(null);
   const styles = useStyles();
@@ -43,9 +45,22 @@ const TaskBoard = () => {
     setOpenedTaskId(null);
   };
 
-  const handleCardDragEnd = () => {};
+  const handleCardDragEnd = (task, source, destination) => {
+    const transition = TaskPresenter.transitions(task).find(({ to }) => destination.toColumnId === to);
+    if (!transition) {
+      return null;
+    }
+
+    return updateTask(TaskPresenter.id(task), { stateEvent: transition.event }).then(() => {
+      loadColumn(destination.toColumnId);
+      loadColumn(source.fromColumnId);
+    });
+  };
+
   const handleTaskCreate = () => {};
+
   const handleTaskLoad = (id) => loadTask(id);
+
   const handleTaskUpdate = (task) => {
     updateTask(task.id, task).then(() => {
       handleClose();

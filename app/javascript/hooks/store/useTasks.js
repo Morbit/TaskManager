@@ -16,6 +16,7 @@ const useTasks = () => {
     loadTask,
     task,
     updateTask,
+    loadColumn,
   };
 };
 
