@@ -38,6 +38,7 @@ gem 'active_model_serializers'
 gem 'webpacker-react'
 gem 'js-routes'
 gem 'simplecov', require: false, group: :test
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'factory_bot_rails'
