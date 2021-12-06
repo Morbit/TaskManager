@@ -25,8 +25,6 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
   const [errors, setErrors] = useState({});
   const styles = useStyles();
 
-  console.log(999, task);
-
   useEffect(() => {
     onLoadCard(cardId).then(setTask);
   }, []);
