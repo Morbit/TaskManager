@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import AsyncSelect from 'react-select/async';
+import Async from 'react-select/async';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
@@ -22,7 +22,7 @@ const UserSelect = ({ error, label, isClearable, isDisabled, isRequired, onChang
     <FormControl margin="dense" disabled={isDisabled} focused={isFocused} error={error} required={isRequired}>
       <InputLabel shrink>{label}</InputLabel>
       <div className={styles.select}>
-        <AsyncSelect
+        <Async
           cacheOptions
           loadOptions={handleLoadOptions}
           defaultOptions
