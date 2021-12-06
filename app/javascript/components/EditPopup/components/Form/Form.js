@@ -12,7 +12,7 @@ const Form = ({ errors, onChange, task }) => {
   const styles = useStyles();
 
   const handleChangeTextField = (fieldName) => (event) => onChange({ ...task, [fieldName]: event.target.value });
-  const handleChangeSelect = () => () => {};
+  const handleChangeSelect = (fieldName) => (user) => onChange({ ...task, [fieldName]: user });
 
   return (
     <form className={styles.root}>
@@ -39,18 +39,16 @@ const Form = ({ errors, onChange, task }) => {
         label="Author"
         value={TaskPresenter.author(task)}
         onChange={handleChangeSelect('author')}
-        isDisabled
         isRequired
         error={has('author', errors)}
         helperText={errors.author}
       />
       <UserSelect
-        label="Asignee"
-        value={TaskPresenter.asignee(task)}
-        onChange={handleChangeSelect('asignee')}
-        isDisabled
+        label="assignee"
+        value={TaskPresenter.assignee(task)}
+        onChange={handleChangeSelect('assignee')}
         isRequired
-        error={has('asignee', errors)}
+        error={has('assignee', errors)}
         helperText={errors.author}
       />
     </form>

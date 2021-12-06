@@ -7,7 +7,7 @@ export default new PropTypesPresenter(
     name: PropTypes.string,
     description: PropTypes.string,
     author: PropTypes.string,
-    asignee: PropTypes.string,
+    assignee: PropTypes.string,
     state: PropTypes.string,
     transitions: PropTypes.string,
   },

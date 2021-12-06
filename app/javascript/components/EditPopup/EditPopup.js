@@ -25,6 +25,8 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
   const [errors, setErrors] = useState({});
   const styles = useStyles();
 
+  console.log(999, task);
+
   useEffect(() => {
     onLoadCard(cardId).then(setTask);
   }, []);
@@ -52,8 +54,6 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
     });
   };
   const isLoading = isNil(task);
-
-  const handleChangeSelect = (fieldName) => (user) => onChange({ ...task, [fieldName]: user });
 
   return (
     <Modal className={styles.modal} open onClose={onClose}>
