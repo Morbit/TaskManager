@@ -47,8 +47,7 @@ const tasksSlice = createSlice({
   },
 });
 
-const { loadColumnSuccess, loadColumnMoreSuccess, taskDestroySuccess, loadTaskSuccess, updateTaskSuccess } =
-  tasksSlice.actions;
+const { loadColumnSuccess, loadColumnMoreSuccess, loadTaskSuccess } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
 
@@ -76,10 +75,7 @@ export const useTasksActions = () => {
     });
   };
 
-  const taskDestroy = (id) =>
-    TasksRepository.destroy(id).then(() => {
-      dispatch(taskDestroySuccess());
-    });
+  const taskDestroy = (id) => TasksRepository.destroy(id);
 
   const loadTask = (id) =>
     TasksRepository.show(id).then(({ data: { task } }) => {
@@ -87,10 +83,7 @@ export const useTasksActions = () => {
       return task;
     });
 
-  const updateTask = (id, data) =>
-    TasksRepository.update(id, data).then(() => {
-      dispatch(updateTaskSuccess());
-    });
+  const updateTask = (id, data) => TasksRepository.update(id, data);
 
   const createTask = (attributes) => TasksRepository.create(attributes);
 

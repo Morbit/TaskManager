@@ -6,6 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import '@asseinfo/react-kanban/dist/styles.css';
 
 import TaskPresenter from 'presenters/TaskPresenter';
+import TaskForm from 'forms/TaskForm';
 
 import Task from 'components/Task';
 import AddPopup from 'components/AddPopup';
@@ -54,27 +55,29 @@ const TaskBoard = () => {
     });
   };
 
-  const handleTaskCreate = (task) =>
-    createTask(task).then(() => {
+  const handleTaskCreate = (task) => {
+    const attributes = TaskForm.attributesToSubmit(task);
+    return createTask(attributes).then(() => {
       loadColumn('new_task');
       handleClose();
     });
+  };
 
   const handleTaskLoad = (id) => loadTask(id);
 
   const handleTaskUpdate = (task) => {
-    updateTask(task.id, task).then(() => {
+    const attributes = TaskForm.attributesToSubmit(task);
+    return updateTask(task.id, attributes).then(() => {
       handleClose();
       loadBoard();
     });
   };
 
-  const handleTaskDestroy = (id) => {
+  const handleTaskDestroy = (id) =>
     taskDestroy(id).then(() => {
       handleClose();
       loadBoard();
     });
-  };
 
   return (
     <>
