@@ -1,4 +1,4 @@
-import { propEq } from 'ramda';
+import { propEq, equals } from 'ramda';
 import { createSlice } from '@reduxjs/toolkit';
 import TasksRepository from 'repositories/TasksRepository';
 import { STATES } from 'presenters/TaskPresenter';
@@ -28,11 +28,16 @@ const tasksSlice = createSlice({
         cards: items,
         meta,
       });
-
-      return state;
     },
     loadColumnMoreSuccess(state, { payload }) {
-      console.log(999, state, payload);
+      const { items, meta, columnId } = payload;
+      const column = state.board.columns.find(propEq('id', columnId));
+      state.board = changeColumn(state.board, column, {
+        cards: [...column.cards, ...items],
+        meta,
+      });
+
+      return state;
     },
     taskDestroySuccess(state, { payload }) {},
     loadTaskSuccess(state, { payload }) {
@@ -52,7 +57,7 @@ export default tasksSlice.reducer;
 export const useTasksActions = () => {
   const dispatch = useDispatch();
 
-  const loadColumn = (state, page = 1, perPage = 10) => {
+  const loadColumn = (state, page = 1, perPage = 10) =>
     TasksRepository.index({
       q: { stateEq: state },
       page,
@@ -60,12 +65,15 @@ export const useTasksActions = () => {
     }).then(({ data }) => {
       dispatch(loadColumnSuccess({ ...data, columnId: state }));
     });
-  };
 
   const loadBoard = () => STATES.map(({ key }) => loadColumn(key));
 
   const loadColumnMore = (state, page = 1, perPage = 10) => {
-    loadColumn(state, page, perPage).then(({ data }) => {
+    TasksRepository.index({
+      q: { stateEq: state },
+      page,
+      perPage,
+    }).then(({ data }) => {
       dispatch(loadColumnMoreSuccess({ ...data, columnId: state }));
     });
   };

@@ -14,8 +14,6 @@ import ColumnHeader from 'components/ColumnHeader';
 
 import useTasks from 'hooks/store/useTasks';
 
-import useStyles from './useStyles';
-
 const MODES = {
   ADD: 'add',
   NONE: 'none',
@@ -25,7 +23,6 @@ const TaskBoard = () => {
   const { board, loadBoard, loadColumnMore, loadTask, taskDestroy, updateTask, loadColumn, createTask } = useTasks();
   const [mode, setMode] = useState(MODES.NONE);
   const [openedTaskId, setOpenedTaskId] = useState(null);
-  const styles = useStyles();
 
   useEffect(() => {
     loadBoard();
@@ -83,7 +80,7 @@ const TaskBoard = () => {
 
   return (
     <>
-      <Fab onClick={handleOpenAddPopup} className={styles.addButton} color="primary" aria-label="add">
+      <Fab onClick={handleOpenAddPopup} color="primary" aria-label="add">
         <AddIcon />
       </Fab>
 
