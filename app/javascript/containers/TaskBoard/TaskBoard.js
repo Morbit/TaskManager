@@ -55,7 +55,6 @@ const TaskBoard = () => {
   };
 
   const handleTaskCreate = (task) =>
-    // fix work with attributes
     createTask(task).then(() => {
       loadColumn('new_task');
       handleClose();
@@ -64,7 +63,6 @@ const TaskBoard = () => {
   const handleTaskLoad = (id) => loadTask(id);
 
   const handleTaskUpdate = (task) => {
-    // fix work with attributes
     updateTask(task.id, task).then(() => {
       handleClose();
       loadBoard();

@@ -1,4 +1,4 @@
-import { propEq, equals } from 'ramda';
+import { propEq } from 'ramda';
 import { createSlice } from '@reduxjs/toolkit';
 import TasksRepository from 'repositories/TasksRepository';
 import { STATES } from 'presenters/TaskPresenter';
@@ -39,13 +39,11 @@ const tasksSlice = createSlice({
 
       return state;
     },
-    taskDestroySuccess(state, { payload }) {},
     loadTaskSuccess(state, { payload }) {
       state.task = payload;
 
       return state;
     },
-    updateTaskSuccess() {},
   },
 });
 
