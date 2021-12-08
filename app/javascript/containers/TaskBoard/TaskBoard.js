@@ -90,7 +90,7 @@ const TaskBoard = () => {
       <KanbanBoard
         disableColumnDrag
         onCardDragEnd={handleCardDragEnd}
-        renderCard={(card) => <Task onClick={handleOpenEditPopup} task={card} />}
+        renderCard={(card) => <Task onClick={handleOpenEditPopup} task={card} key={card.id} />}
         renderColumnHeader={(column) => <ColumnHeader column={column} onLoadMore={loadColumnMore} />}
       >
         {board}
