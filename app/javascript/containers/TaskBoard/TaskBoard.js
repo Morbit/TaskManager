@@ -18,6 +18,7 @@ import useTasks from 'hooks/store/useTasks';
 const MODES = {
   ADD: 'add',
   NONE: 'none',
+  EDIT: 'edit',
 };
 
 const TaskBoard = () => {
